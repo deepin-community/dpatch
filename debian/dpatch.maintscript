@@ -1,0 +1,1 @@
+rm_conffile /etc/bash_completion.d/dpatch_edit_patch 2.0.38~ dpatch
