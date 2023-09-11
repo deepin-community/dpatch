@@ -1,15 +1,28 @@
-Source: template-repository
-Section: unknown
+Source: dpatch
+Section: vcs
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (= 13), perl
+Rules-Requires-Root: no
+Vcs-Browser: https://salsa.debian.org/debian/dpatch
+Vcs-Git: https://salsa.debian.org/debian/dpatch.git
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: dpatch
+Architecture: all
+Multi-Arch: foreign
+Depends: bash (>= 3.0-6), dpkg-dev, ${perl:Depends}, ${misc:Depends}
+Recommends: fakeroot, patchutils
+Suggests: curl
+Description: patch maintenance system for Debian source packages
+ dpatch is an easy to use patch system for Debian packages, somewhat
+ similar to the dbs package, but much simpler to use.
+ .
+ It lets you store patches and other simple customization templates in
+ debian/patches and otherwise does not require much reorganization of
+ your source tree. To get the patches applied at build time you simply
+ need to include a makefile snippet and then depend on the
+ patch/unpatch target in the build or clean stage of debian/rules - or
+ you can use the dpatch patching script directly.
+ .
+ It can easily apply patches only on specific architectures if needed.
